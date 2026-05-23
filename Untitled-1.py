@@ -244,153 +244,257 @@ st.markdown("""
 }
 
 
-/* ── Root variables ── */
+/* ── Root variables — Premium Light Theme ── */
 :root {
-    --bg-base:       #080b12;
-    --bg-card:       #0d1117;
-    --bg-card2:      #111827;
-    --bg-hover:      #1a2235;
-    --border:        #1e2d45;
-    --border-bright: #2a3f5f;
-    --text-primary:  #e8edf5;
-    --text-secondary:#6b7fa3;
-    --text-muted:    #3d4f6a;
-    --accent-blue:   #3b82f6;
-    --accent-cyan:   #06b6d4;
-    --accent-green:  #10b981;
-    --accent-amber:  #f59e0b;
-    --accent-rose:   #f43f5e;
-    --accent-violet: #8b5cf6;
+    --bg-base:        #f0f4fa;
+    --bg-page:        #eef2f9;
+    --bg-card:        #ffffff;
+    --bg-card2:       #f8fafd;
+    --bg-card-hover:  #f1f6ff;
+    --bg-sidebar:     #1a2340;
+    --bg-sidebar2:    #141c33;
+    --border:         #dde3ef;
+    --border-bright:  #c3cedf;
+    --border-hover:   #93a8d0;
+    --text-primary:   #0f1c2e;
+    --text-secondary: #4a5e7a;
+    --text-muted:     #8fa0b8;
+    --accent-blue:    #2563eb;
+    --accent-blue-lt: #dbeafe;
+    --accent-cyan:    #0891b2;
+    --accent-cyan-lt: #cffafe;
+    --accent-green:   #059669;
+    --accent-green-lt:#d1fae5;
+    --accent-amber:   #d97706;
+    --accent-amber-lt:#fef3c7;
+    --accent-rose:    #e11d48;
+    --accent-rose-lt: #ffe4e6;
+    --accent-violet:  #7c3aed;
+    --accent-violet-lt:#ede9fe;
+    --shadow-sm:      0 1px 4px rgba(15,28,46,0.07), 0 0 0 1px rgba(15,28,46,0.04);
+    --shadow-md:      0 4px 16px rgba(15,28,46,0.10), 0 1px 4px rgba(15,28,46,0.06);
+    --shadow-hover:   0 12px 36px rgba(37,99,235,0.14), 0 2px 8px rgba(15,28,46,0.08);
+    --shadow-chart:   0 6px 24px rgba(15,28,46,0.09), 0 1px 4px rgba(15,28,46,0.05);
 }
 
 /* ── Global ── */
 html, body, [class*="css"] {
     font-family: 'DM Sans', sans-serif;
-    background-color: var(--bg-base) !important;
+    background-color: var(--bg-page) !important;
     color: var(--text-primary) !important;
 }
 
-.main { background-color: var(--bg-base) !important; }
+.main {
+    background: linear-gradient(160deg, #eef2f9 0%, #e8eef8 40%, #edf1f8 100%) !important;
+    min-height: 100vh;
+}
 .block-container { padding: 1.5rem 2rem 2rem !important; }
 
-/* ── Sidebar ── */
+/* ── Sidebar — deep navy, executive feel ── */
 [data-testid="stSidebar"] {
-    background: #060910 !important;
-    border-right: 1px solid var(--border) !important;
+    background: linear-gradient(180deg, #1a2340 0%, #141c33 100%) !important;
+    border-right: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.18) !important;
 }
 [data-testid="stSidebar"] > div { padding-top: 0 !important; }
-[data-testid="stSidebar"] * { color: var(--text-secondary) !important; }
+[data-testid="stSidebar"] * { color: #a8b8d8 !important; }
 [data-testid="stSidebar"] .stRadio > label { display: none; }
 [data-testid="stSidebar"] .stRadio div[role="radiogroup"] { gap: 2px; display: flex; flex-direction: column; }
 [data-testid="stSidebar"] .stRadio label {
     font-family: 'DM Sans', sans-serif !important;
     font-size: 13px !important;
     font-weight: 500 !important;
-    color: var(--text-secondary) !important;
+    color: #7a90b8 !important;
     padding: 9px 14px !important;
     border-radius: 8px !important;
-    transition: all 0.15s !important;
+    transition: all 0.2s ease !important;
     border: 1px solid transparent !important;
 }
 [data-testid="stSidebar"] .stRadio label:hover {
-    background: var(--bg-hover) !important;
-    color: var(--text-primary) !important;
+    background: rgba(255,255,255,0.07) !important;
+    color: #e2eaf8 !important;
+    border-color: rgba(255,255,255,0.08) !important;
 }
 [data-testid="stSidebar"] .stRadio [aria-checked="true"] ~ div,
 [data-testid="stSidebar"] .stRadio [data-checked="true"] ~ div {
     color: #fff !important;
 }
 
-/* ── Metric cards ── */
+/* ── Metric cards — premium white glass cards ── */
 [data-testid="metric-container"] {
-    background: var(--bg-card) !important;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 14px !important;
-    padding: 20px 22px !important;
-    position: relative;
-    overflow: hidden;
+    border-radius: 16px !important;
+    padding: 22px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition:
+        transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.32s ease,
+        border-color 0.25s ease,
+        background 0.25s ease !important;
+    cursor: default;
 }
+
+/* Coloured top-edge accent stripe per card position */
+[data-testid="column"]:nth-child(1) [data-testid="metric-container"] { border-top: 3px solid #2563eb !important; }
+[data-testid="column"]:nth-child(2) [data-testid="metric-container"] { border-top: 3px solid #059669 !important; }
+[data-testid="column"]:nth-child(3) [data-testid="metric-container"] { border-top: 3px solid #d97706 !important; }
+[data-testid="column"]:nth-child(4) [data-testid="metric-container"] { border-top: 3px solid #7c3aed !important; }
+
+/* Subtle corner glow blob */
+[data-testid="metric-container"]::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    opacity: 0.06;
+    transition: opacity 0.3s ease, transform 0.35s ease;
+    pointer-events: none;
+}
+[data-testid="column"]:nth-child(1) [data-testid="metric-container"]::before { background: #2563eb; }
+[data-testid="column"]:nth-child(2) [data-testid="metric-container"]::before { background: #059669; }
+[data-testid="column"]:nth-child(3) [data-testid="metric-container"]::before { background: #d97706; }
+[data-testid="column"]:nth-child(4) [data-testid="metric-container"]::before { background: #7c3aed; }
+
+/* ✨ HOVER STATE — lift + glow + blob expand ✨ */
+[data-testid="metric-container"]:hover {
+    transform: translateY(-5px) scale(1.025) !important;
+    box-shadow: var(--shadow-hover) !important;
+    border-color: var(--border-hover) !important;
+    background: linear-gradient(145deg, #ffffff 0%, #eef5ff 100%) !important;
+}
+[data-testid="metric-container"]:hover::before {
+    opacity: 0.13 !important;
+    transform: scale(1.4) !important;
+}
+
 [data-testid="stMetricValue"] {
     font-family: 'Syne', sans-serif !important;
-    font-size: 1.75rem !important;
-    font-weight: 700 !important;
+    font-size: 1.85rem !important;
+    font-weight: 800 !important;
     color: var(--text-primary) !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.03em !important;
 }
 [data-testid="stMetricLabel"] {
     font-size: 0.68rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     color: var(--text-secondary) !important;
     text-transform: uppercase !important;
     letter-spacing: 0.1em !important;
 }
 [data-testid="stMetricDelta"] {
     font-size: 0.75rem !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 
-/* ── Dataframe ── */
-[data-testid="stDataFrame"] {
-    border-radius: 14px !important;
+/* ── Plotly charts — white card with lift-on-hover ── */
+[data-testid="stPlotlyChart"] {
+    animation: fadeIn 0.6s ease both;
+    border-radius: 16px !important;
     overflow: hidden !important;
     border: 1px solid var(--border) !important;
-    background: var(--bg-card) !important;
+    background: #ffffff !important;
+    box-shadow: var(--shadow-chart) !important;
+    transition:
+        transform 0.30s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.30s ease,
+        border-color 0.25s ease !important;
 }
-[data-testid="stDataFrame"] iframe { background: transparent !important; }
+[data-testid="stPlotlyChart"]:hover {
+    transform: translateY(-4px) scale(1.008) !important;
+    box-shadow: 0 18px 48px rgba(37,99,235,0.13), 0 4px 12px rgba(15,28,46,0.08) !important;
+    border-color: #93a8d0 !important;
+}
+
+/* ── Dataframe — clean white card ── */
+[data-testid="stDataFrame"] {
+    animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border) !important;
+    background: #ffffff !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+[data-testid="stDataFrame"]:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
+}
+[data-testid="stDataFrame"] iframe { background: #ffffff !important; }
 
 /* ── Chat messages ── */
 [data-testid="stChatMessage"] {
-    background: var(--bg-card) !important;
+    background: #ffffff !important;
     border: 1px solid var(--border) !important;
     border-radius: 14px !important;
     margin-bottom: 10px !important;
+    box-shadow: var(--shadow-sm) !important;
 }
 
 /* ── Inputs ── */
 .stTextInput input, .stChatInput textarea {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border) !important;
+    background: #ffffff !important;
+    border: 1.5px solid var(--border) !important;
     color: var(--text-primary) !important;
     border-radius: 10px !important;
     font-family: 'DM Sans', sans-serif !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 .stTextInput input:focus, .stChatInput textarea:focus {
     border-color: var(--accent-blue) !important;
-    box-shadow: 0 0 0 2px rgba(59,130,246,0.15) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.12) !important;
 }
 
 /* ── File uploader ── */
 [data-testid="stFileUploader"] {
-    background: var(--bg-card) !important;
-    border: 1px dashed var(--border-bright) !important;
+    background: #f8fafd !important;
+    border: 1.5px dashed var(--border-bright) !important;
     border-radius: 12px !important;
     padding: 12px !important;
+    transition: border-color 0.2s ease, background 0.2s ease !important;
+}
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--accent-blue) !important;
+    background: #eff6ff !important;
 }
 
 /* ── Buttons ── */
 .stButton button {
-    background: var(--bg-card2) !important;
-    border: 1px solid var(--border) !important;
+    background: #ffffff !important;
+    border: 1.5px solid var(--border) !important;
     color: var(--text-secondary) !important;
-    border-radius: 8px !important;
+    border-radius: 9px !important;
     font-family: 'DM Sans', sans-serif !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     font-size: 12.5px !important;
-    transition: all 0.15s !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 .stButton button:hover {
     border-color: var(--accent-blue) !important;
     color: var(--accent-blue) !important;
-    background: rgba(59,130,246,0.07) !important;
+    background: #eff6ff !important;
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 6px 18px rgba(37,99,235,0.15) !important;
 }
 
 /* ── Dividers ── */
 hr { border-color: var(--border) !important; margin: 16px 0 !important; }
 
 /* ── Success/info alerts ── */
-.stSuccess, .stInfo {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border) !important;
+.stSuccess {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5) !important;
+    border: 1px solid #6ee7b7 !important;
+    border-radius: 10px !important;
+    color: var(--text-primary) !important;
+}
+.stInfo {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe) !important;
+    border: 1px solid #93c5fd !important;
     border-radius: 10px !important;
     color: var(--text-primary) !important;
 }
@@ -398,22 +502,83 @@ hr { border-color: var(--border) !important; margin: 16px 0 !important; }
 /* ── Hide branding ── */
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
-header { visibility: visible; }
+header { visibility: hidden; }
 
-/* ── Custom classes ── */
+/* ── Page header banner ── */
+.page-header-wrap {
+    margin: -8px -8px 28px -8px;
+    padding: 26px 28px 22px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    animation: headerSlideIn 0.45s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes headerSlideIn {
+    0%   { opacity:0; transform:translateY(-14px) scale(0.98); }
+    100% { opacity:1; transform:translateY(0)     scale(1); }
+}
+
+/* Noise texture overlay */
+.page-header-wrap::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 160px;
+    pointer-events:none; border-radius:inherit;
+}
+/* Sheen sweep on load */
+.page-header-wrap::after {
+    content:'';
+    position:absolute; top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(105deg,transparent 20%,rgba(255,255,255,0.18) 50%,transparent 80%);
+    animation: headerSheen 1.1s ease 0.3s both;
+    pointer-events:none;
+}
+@keyframes headerSheen {
+    0%   { left:-60%; }
+    100% { left:130%; }
+}
+
+.page-header-inner {
+    position:relative; z-index:1;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.page-header-left { flex:1; }
+
 .page-title {
     font-family: 'Syne', sans-serif;
     font-size: 26px;
     font-weight: 800;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
-    margin: 0 0 4px;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+    margin: 0 0 5px;
+    line-height: 1.15;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 .page-subtitle {
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    margin-bottom: 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
     font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+}
+.page-header-badge {
+    display:flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:99px;
+    padding:7px 14px;
+    font-size:11.5px; font-weight:600;
+    color:rgba(255,255,255,0.9);
+    white-space:nowrap;
+    backdrop-filter:blur(4px);
+    flex-shrink:0;
+}
+.page-header-icon {
+    font-size:36px; line-height:1;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+    flex-shrink:0;
 }
 .section-label {
     font-family: 'DM Sans', sans-serif;
@@ -460,11 +625,16 @@ header { visibility: visible; }
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease !important;
+}
+.podium-card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 16px 40px rgba(15,28,46,0.14) !important;
 }
 .nav-section-label {
     font-size: 9.5px;
     font-weight: 700;
-    color: #2a3f5f;
+    color: rgba(255,255,255,0.25);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     padding: 16px 14px 6px;
@@ -709,14 +879,32 @@ st.markdown("""
     const chart = e.target.closest('[data-testid="stPlotlyChart"]');
     if (chart && !chart._hoverBound) {
       chart._hoverBound = true;
-      chart.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
+      chart.style.transition = 'transform 0.30s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.30s ease, border-color 0.25s ease';
       chart.addEventListener('mouseenter', () => {
-        chart.style.transform = 'translateY(-2px)';
-        chart.style.boxShadow = '0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1)';
+        chart.style.transform = 'translateY(-4px) scale(1.008)';
+        chart.style.boxShadow = '0 18px 48px rgba(37,99,235,0.13), 0 4px 12px rgba(15,28,46,0.08)';
+        chart.style.borderColor = '#93a8d0';
       });
       chart.addEventListener('mouseleave', () => {
-        chart.style.transform = 'translateY(0)';
-        chart.style.boxShadow = 'none';
+        chart.style.transform = 'translateY(0) scale(1)';
+        chart.style.boxShadow = '0 6px 24px rgba(15,28,46,0.09), 0 1px 4px rgba(15,28,46,0.05)';
+        chart.style.borderColor = '#dde3ef';
+      });
+    }
+
+    const card = e.target.closest('[data-testid="metric-container"]');
+    if (card && !card._hoverBound) {
+      card._hoverBound = true;
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.32s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.32s ease, border-color 0.25s ease';
+        card.style.transform = 'translateY(-5px) scale(1.025)';
+        card.style.boxShadow = '0 12px 36px rgba(37,99,235,0.14), 0 2px 8px rgba(15,28,46,0.08)';
+        card.style.borderColor = '#93a8d0';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+        card.style.boxShadow = '0 1px 4px rgba(15,28,46,0.07)';
+        card.style.borderColor = '#dde3ef';
       });
     }
   });
@@ -726,37 +914,46 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ── Chart theme ────────────────────────────────────────────────────────────────
-CHART_BG    = "#0d1117"
-GRID_COLOR  = "#1a2540"
+# ── Chart theme — light, crisp, executive ──────────────────────────────────────
+CHART_BG    = "#ffffff"
+CHART_PAPER = "#ffffff"
+GRID_COLOR  = "#f0f4fa"
+AXIS_COLOR  = "#c8d4e8"
 TEXT_COLOR  = "#6b7fa3"
 FONT_FAMILY = "DM Sans"
 
 def chart_layout(height=360, margin=None):
     if margin is None:
-        margin = dict(l=0, r=24, t=16, b=0)
+        margin = dict(l=0, r=24, t=20, b=0)
     return dict(
         height=height,
-        paper_bgcolor=CHART_BG,
-        plot_bgcolor=CHART_BG,
+        paper_bgcolor=CHART_PAPER,
+        plot_bgcolor="#ffffff",
         font=dict(family=FONT_FAMILY, color=TEXT_COLOR, size=11),
         margin=margin,
         showlegend=False,
-        xaxis=dict(showgrid=True, gridcolor=GRID_COLOR, zeroline=False,
-                   tickfont=dict(color=TEXT_COLOR, size=10.5), linecolor=GRID_COLOR),
-        yaxis=dict(showgrid=True, gridcolor=GRID_COLOR, zeroline=False,
-                   tickfont=dict(color=TEXT_COLOR, size=10.5), linecolor=GRID_COLOR),
+        xaxis=dict(
+            showgrid=True, gridcolor=GRID_COLOR, zeroline=False,
+            tickfont=dict(color=TEXT_COLOR, size=10.5),
+            linecolor=AXIS_COLOR, showline=True,
+        ),
+        yaxis=dict(
+            showgrid=True, gridcolor=GRID_COLOR, zeroline=False,
+            tickfont=dict(color=TEXT_COLOR, size=10.5),
+            linecolor=AXIS_COLOR, showline=False,
+        ),
     )
 
 
-# ── Palette pools ──────────────────────────────────────────────────────────────
-BLUE_SCALE   = ["#0f2a4a", "#1d4ed8", "#3b82f6", "#7dd3fc"]
-VIOLET_SCALE = ["#1e0a3c", "#6d28d9", "#8b5cf6", "#c4b5fd"]
-GREEN_SCALE  = ["#052e1a", "#065f46", "#10b981", "#6ee7b7"]
-AMBER_SCALE  = ["#2d1a00", "#b45309", "#f59e0b", "#fde68a"]
-CYAN_SCALE   = ["#011f2d", "#0e7490", "#06b6d4", "#a5f3fc"]
-ROSE_SCALE   = ["#2d0014", "#be123c", "#f43f5e", "#fda4af"]
-PROC_COLORS  = ["#3b82f6","#06b6d4","#10b981","#f59e0b","#8b5cf6","#f43f5e","#22d3ee","#a3e635","#fb923c","#e879f9"]
+# ── Palette pools — vivid but professional on white ────────────────────────────
+BLUE_SCALE   = ["#dbeafe", "#3b82f6", "#1d4ed8"]
+VIOLET_SCALE = ["#ede9fe", "#8b5cf6", "#5b21b6"]
+GREEN_SCALE  = ["#d1fae5", "#34d399", "#059669"]
+AMBER_SCALE  = ["#fef3c7", "#fbbf24", "#d97706"]
+CYAN_SCALE   = ["#cffafe", "#22d3ee", "#0891b2"]
+ROSE_SCALE   = ["#ffe4e6", "#fb7185", "#e11d48"]
+PROC_COLORS  = ["#2563eb","#0891b2","#059669","#d97706","#7c3aed",
+                "#e11d48","#0284c7","#65a30d","#ea580c","#9333ea"]
 
 
 # ── Data ────────────────────────────────────────────────────────────────────────
@@ -861,14 +1058,15 @@ def fmt_inr(n):
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("""
-    <div style='padding:20px 16px 10px;border-bottom:1px solid #1e2d45;margin-bottom:8px;'>
+    <div style='padding:20px 16px 10px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:8px;'>
         <div style='display:flex;align-items:center;gap:10px;'>
             <div style='width:36px;height:36px;border-radius:10px;
-                        background:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);
-                        display:flex;align-items:center;justify-content:center;font-size:18px;'>⚡</div>
+                        background:linear-gradient(135deg,#2563eb 0%,#7c3aed 100%);
+                        display:flex;align-items:center;justify-content:center;font-size:18px;
+                        box-shadow:0 4px 14px rgba(37,99,235,0.4);'>⚡</div>
             <div>
-                <div style='font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:#e8edf5;letter-spacing:-0.01em;'>AgentIQ</div>
-                <div style='font-size:10px;color:#3d4f6a;letter-spacing:0.08em;text-transform:uppercase;'>Analytics Platform</div>
+                <div style='font-family:Syne,sans-serif;font-weight:800;font-size:15px;color:#f0f6ff;letter-spacing:-0.01em;'>AgentIQ</div>
+                <div style='font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;'>Analytics Platform</div>
             </div>
         </div>
     </div>
@@ -895,7 +1093,7 @@ with st.sidebar:
 
     st.markdown("""
     <div style='position:absolute;bottom:20px;left:16px;right:16px;'>
-        <div style='font-size:10px;color:#2a3f5f;line-height:1.6;'>
+        <div style='font-size:10px;color:rgba(255,255,255,0.25);line-height:1.6;'>
             1,877 agents &nbsp;·&nbsp; ₹5.46 Cr incentives<br>
             Data: Term Agent Inc
         </div>
@@ -911,30 +1109,223 @@ summary = compute_summary(df_raw) if df_raw is not None else EMBEDDED_SUMMARY
 # PAGE 1: OVERVIEW
 # ════════════════════════════════════════════════════════════════════════
 if page == "⚡ Overview":
-    st.markdown("<div class='page-title'>⚡ Performance Overview</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>Real-time KPIs across 1,877 agents — incentives, conversions & APE.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#1e3a5f 0%,#2563eb 55%,#0891b2 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>Performance Overview</div>
+                <div class='page-subtitle'>Real-time KPIs across 1,877 agents — incentives, conversions &amp; APE.</div>
+            </div>
+            <div class='page-header-icon'>⚡</div>
+            <div class='page-header-badge'>📅 Monthly Report</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    # ── KPI Row 1 ──
-    c1, c2, c3, c4 = st.columns(4)
-    kpis = [
-        (c1, "Total Agents",    f"{summary['total_agents']:,}",         f"▲ {summary['active']:,} active",      "#3b82f6"),
-        (c2, "Total Incentive", fmt_inr(summary['total_incentive']),    f"avg {fmt_inr(summary['avg_incentive'])}", "#10b981"),
-        (c3, "Issuance Rate",   f"{summary['issuance_rate_pct']}%",     f"{summary['total_issued_bkgs']:,.0f} converted", "#f59e0b"),
-        (c4, "APE Conversion",  f"{summary['ape_conversion_pct']}%",    fmt_inr(summary['total_issued_ape']),   "#8b5cf6"),
+    # ── KPI Row 1 — rich styled cards ──
+    kpi_row1 = [
+        {
+            "label": "Total Agents", "value": f"{summary['total_agents']:,}",
+            "sub": f"▲ {summary['active']:,} active · {summary['inactive']} inactive",
+            "icon": "👥", "color": "#2563eb", "light": "#dbeafe", "bg": "#eff6ff",
+            "bar": 100, "tag": "Workforce",
+        },
+        {
+            "label": "Total Incentive", "value": fmt_inr(summary['total_incentive']),
+            "sub": f"avg {fmt_inr(summary['avg_incentive'])} / agent",
+            "icon": "💰", "color": "#059669", "light": "#d1fae5", "bg": "#f0fdf4",
+            "bar": 100, "tag": "Payout",
+        },
+        {
+            "label": "Issuance Rate", "value": f"{summary['issuance_rate_pct']}%",
+            "sub": f"{summary['total_issued_bkgs']:,.0f} of {summary['total_source_bkgs']:,.0f} bookings",
+            "icon": "📈", "color": "#d97706", "light": "#fef3c7", "bg": "#fffbeb",
+            "bar": int(summary['issuance_rate_pct']), "tag": "Conversion",
+        },
+        {
+            "label": "APE Conversion", "value": f"{summary['ape_conversion_pct']}%",
+            "sub": f"{fmt_inr(summary['total_issued_ape'])} issued premium",
+            "icon": "🎯", "color": "#7c3aed", "light": "#ede9fe", "bg": "#f5f3ff",
+            "bar": int(summary['ape_conversion_pct']), "tag": "Premium",
+        },
     ]
-    for col, label, val, delta, _ in kpis:
-        col.metric(label, val, delta)
 
-    st.markdown("<div style='margin:6px 0;'></div>", unsafe_allow_html=True)
-    c5, c6, c7, c8 = st.columns(4)
-    kpis2 = [
-        (c5, "Active Agents",      f"{summary['active']:,}",                      f"▼ {summary['inactive']} inactive"),
-        (c6, "Source APE",         fmt_inr(summary['total_source_ape']),           "total sourced"),
-        (c7, "Issued APE",         fmt_inr(summary['total_issued_ape']),           "successfully issued"),
-        (c8, "Zero-Issuance",      str(summary['zero_issuance_agents']),           "agents with 0 bkgs"),
+    cols1 = st.columns(4)
+    for i, (col, kpi) in enumerate(zip(cols1, kpi_row1)):
+        col.markdown(f"""
+        <div class="iq-kpi-card" style="
+            background: linear-gradient(145deg, #ffffff 0%, {kpi['bg']} 100%);
+            border: 1px solid #dde3ef;
+            border-top: 3px solid {kpi['color']};
+            border-radius: 16px;
+            padding: 20px 18px 16px;
+            box-shadow: 0 2px 8px rgba(15,28,46,0.07), 0 0 0 1px rgba(15,28,46,0.03);
+            cursor: default;
+            animation: kpiSlideUp 0.5s cubic-bezier(0.34,1.56,0.64,1) {i*0.08:.2f}s both;
+            position: relative; overflow: hidden;">
+            <!-- corner glow -->
+            <div style="position:absolute;top:-24px;right:-24px;width:100px;height:100px;
+                border-radius:50%;background:{kpi['color']};opacity:0.06;
+                transition:opacity 0.3s ease,transform 0.35s ease;" class="iq-glow"></div>
+            <!-- top row -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                <span style="font-size:9.5px;font-weight:700;color:{kpi['color']};
+                    text-transform:uppercase;letter-spacing:0.1em;">{kpi['tag']}</span>
+                <span style="font-size:18px;line-height:1;">{kpi['icon']}</span>
+            </div>
+            <!-- label -->
+            <div style="font-size:11px;font-weight:600;color:#6b7fa3;margin-bottom:4px;
+                letter-spacing:0.02em;">{kpi['label']}</div>
+            <!-- value -->
+            <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;
+                color:#0f1c2e;letter-spacing:-0.03em;line-height:1.1;margin-bottom:6px;">
+                {kpi['value']}
+            </div>
+            <!-- sub -->
+            <div style="font-size:10.5px;color:#6b7fa3;margin-bottom:12px;line-height:1.4;">
+                {kpi['sub']}
+            </div>
+            <!-- progress bar -->
+            <div style="height:4px;background:#e8eef8;border-radius:99px;overflow:hidden;">
+                <div class="iq-bar" style="
+                    height:100%;border-radius:99px;
+                    background:linear-gradient(90deg,{kpi['light']},{kpi['color']});
+                    width:0%;
+                    transition:width 1.1s cubic-bezier(0.16,1,0.3,1) {0.3 + i*0.12:.2f}s;"
+                    data-width="{kpi['bar']}">
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<div style='margin:10px 0;'></div>", unsafe_allow_html=True)
+
+    # ── KPI Row 2 ──
+    kpi_row2 = [
+        {
+            "label": "Active Agents", "value": f"{summary['active']:,}",
+            "sub": f"▼ {summary['inactive']} inactive this period",
+            "icon": "✅", "color": "#0891b2", "light": "#cffafe", "bg": "#ecfeff",
+            "bar": int(summary['active'] / summary['total_agents'] * 100), "tag": "Active",
+        },
+        {
+            "label": "Source APE", "value": fmt_inr(summary['total_source_ape']),
+            "sub": "total premium sourced by agents",
+            "icon": "📋", "color": "#2563eb", "light": "#dbeafe", "bg": "#eff6ff",
+            "bar": 100, "tag": "Sourced",
+        },
+        {
+            "label": "Issued APE", "value": fmt_inr(summary['total_issued_ape']),
+            "sub": "successfully issued premium",
+            "icon": "🏦", "color": "#059669", "light": "#d1fae5", "bg": "#f0fdf4",
+            "bar": int(summary['ape_conversion_pct']), "tag": "Issued",
+        },
+        {
+            "label": "Zero-Issuance", "value": str(summary['zero_issuance_agents']),
+            "sub": "agents with 0 bookings this month",
+            "icon": "⚠️", "color": "#e11d48", "light": "#fecdd3", "bg": "#fff1f2",
+            "bar": int(summary['zero_issuance_agents'] / summary['total_agents'] * 100), "tag": "At Risk",
+        },
     ]
-    for col, label, val, delta in kpis2:
-        col.metric(label, val, delta)
+
+    cols2 = st.columns(4)
+    for i, (col, kpi) in enumerate(zip(cols2, kpi_row2)):
+        col.markdown(f"""
+        <div class="iq-kpi-card" style="
+            background: linear-gradient(145deg, #ffffff 0%, {kpi['bg']} 100%);
+            border: 1px solid #dde3ef;
+            border-top: 3px solid {kpi['color']};
+            border-radius: 16px;
+            padding: 20px 18px 16px;
+            box-shadow: 0 2px 8px rgba(15,28,46,0.07), 0 0 0 1px rgba(15,28,46,0.03);
+            cursor: default;
+            animation: kpiSlideUp 0.5s cubic-bezier(0.34,1.56,0.64,1) {0.32 + i*0.08:.2f}s both;
+            position: relative; overflow: hidden;">
+            <div style="position:absolute;top:-24px;right:-24px;width:100px;height:100px;
+                border-radius:50%;background:{kpi['color']};opacity:0.06;
+                transition:opacity 0.3s ease,transform 0.35s ease;" class="iq-glow"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                <span style="font-size:9.5px;font-weight:700;color:{kpi['color']};
+                    text-transform:uppercase;letter-spacing:0.1em;">{kpi['tag']}</span>
+                <span style="font-size:18px;line-height:1;">{kpi['icon']}</span>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:#6b7fa3;margin-bottom:4px;
+                letter-spacing:0.02em;">{kpi['label']}</div>
+            <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;
+                color:#0f1c2e;letter-spacing:-0.03em;line-height:1.1;margin-bottom:6px;">
+                {kpi['value']}
+            </div>
+            <div style="font-size:10.5px;color:#6b7fa3;margin-bottom:12px;line-height:1.4;">
+                {kpi['sub']}
+            </div>
+            <div style="height:4px;background:#e8eef8;border-radius:99px;overflow:hidden;">
+                <div class="iq-bar" style="
+                    height:100%;border-radius:99px;
+                    background:linear-gradient(90deg,{kpi['light']},{kpi['color']});
+                    width:0%;
+                    transition:width 1.1s cubic-bezier(0.16,1,0.3,1) {0.62 + i*0.12:.2f}s;"
+                    data-width="{kpi['bar']}">
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # ── Inject KPI animation styles + JS ──
+    st.markdown("""
+    <style>
+    @keyframes kpiSlideUp {
+        0%   { opacity:0; transform: translateY(24px) scale(0.94); }
+        60%  { transform: translateY(-3px) scale(1.01); }
+        100% { opacity:1; transform: translateY(0) scale(1); }
+    }
+    .iq-kpi-card {
+        transition:
+            transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+            box-shadow 0.32s ease,
+            border-color 0.25s ease !important;
+        will-change: transform;
+    }
+    .iq-kpi-card:hover {
+        transform: translateY(-6px) scale(1.03) !important;
+        box-shadow: 0 16px 40px rgba(37,99,235,0.16),
+                    0 4px 12px rgba(15,28,46,0.08),
+                    0 0 0 1.5px rgba(37,99,235,0.18) !important;
+        border-color: #93c5fd !important;
+        z-index: 10;
+    }
+    .iq-kpi-card:hover .iq-glow {
+        opacity: 0.15 !important;
+        transform: scale(1.5) !important;
+    }
+    .iq-kpi-card:hover .iq-bar {
+        filter: brightness(1.1) saturate(1.15);
+    }
+    .iq-kpi-card:active {
+        transform: translateY(-2px) scale(1.01) !important;
+        transition-duration: 0.1s !important;
+    }
+    </style>
+    <script>
+    (function animateBars() {
+        function run() {
+            document.querySelectorAll('.iq-bar').forEach(function(bar) {
+                var w = bar.getAttribute('data-width');
+                if (w && bar.style.width === '0%') {
+                    setTimeout(function() { bar.style.width = w + '%'; }, 80);
+                }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', run);
+        } else {
+            run();
+            setTimeout(run, 300);
+        }
+        var obs = new MutationObserver(function() { setTimeout(run, 120); });
+        obs.observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+    """, unsafe_allow_html=True)
 
     # ── Chart row: Bar + Donut ──
     st.markdown("<div class='section-label'>Incentive Distribution by Process Group</div>", unsafe_allow_html=True)
@@ -949,12 +1340,12 @@ if page == "⚡ Overview":
             orientation="h",
             marker=dict(
                 color=proc_df["Total Incentive (₹L)"],
-                colorscale=[[0, "#0f2a4a"], [0.4, "#1d4ed8"], [1.0, "#06b6d4"]],
+                colorscale=[[0, "#dbeafe"], [0.4, "#3b82f6"], [1.0, "#1d4ed8"]],
                 line=dict(width=0),
             ),
             text=proc_df["Total Incentive (₹L)"].apply(lambda x: f"₹{x:.1f}L"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10.5, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10.5, family=FONT_FAMILY),
         ))
         fig_bar.update_layout(**chart_layout(380, dict(l=0, r=60, t=16, b=0)))
         fig_bar.update_xaxes(title=None)
@@ -966,13 +1357,13 @@ if page == "⚡ Overview":
             values=[summary["active"], summary["inactive"]],
             labels=["Active", "Inactive"],
             hole=0.65,
-            marker=dict(colors=["#3b82f6", "#1e2d45"], line=dict(color="#0d1117", width=3)),
-            textfont=dict(color="#e8edf5", size=12, family=FONT_FAMILY),
+            marker=dict(colors=["#2563eb", "#e8eef8"], line=dict(color="#ffffff", width=3)),
+            textfont=dict(color="#1e293b", size=12, family=FONT_FAMILY),
             textinfo="percent+label",
         ))
         fig_donut.add_annotation(
             text=f"<b>{summary['total_agents']:,}</b>",
-            x=0.5, y=0.5, font=dict(size=22, color="#e8edf5", family="Syne"),
+            x=0.5, y=0.5, font=dict(size=22, color="#0f1c2e", family="Syne"),
             showarrow=False
         )
         fig_donut.update_layout(**chart_layout(240, dict(l=0,r=0,t=16,b=0)))
@@ -991,7 +1382,7 @@ if page == "⚡ Overview":
             marker=dict(color=TENURE_PALETTE, line=dict(width=0)),
             text=ten_df["Avg Incentive (₹)"].apply(lambda x: f"₹{x:,}"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig_ten.update_layout(**chart_layout(290, dict(l=0,r=0,t=16,b=0)))
         st.plotly_chart(fig_ten, use_container_width=True)
@@ -1019,16 +1410,26 @@ if page == "⚡ Overview":
 # PAGE 2: TOP AGENTS
 # ════════════════════════════════════════════════════════════════════════
 elif page == "🏆 Top Agents":
-    st.markdown("<div class='page-title'>🏆 Top Agents Leaderboard</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>Ranked by final incentive payout — this month's star performers.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#422006 0%,#d97706 50%,#f59e0b 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>Top Agents Leaderboard</div>
+                <div class='page-subtitle'>Ranked by final incentive payout — this month's star performers.</div>
+            </div>
+            <div class='page-header-icon'>🏆</div>
+            <div class='page-header-badge'>🥇 Top 10 Ranked</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Podium top 3
     st.markdown("<div class='section-label'>Podium — Top 3</div>", unsafe_allow_html=True)
     p1, p2, p3 = st.columns(3)
     podium = [
-        (p1, TOP_AGENTS_DATA[0], "🥇", "linear-gradient(135deg,#1a0f00,#2d1900)", "#f59e0b", "#fde68a"),
-        (p2, TOP_AGENTS_DATA[1], "🥈", "linear-gradient(135deg,#0a0f1a,#111827)", "#94a3b8", "#e2e8f0"),
-        (p3, TOP_AGENTS_DATA[2], "🥉", "linear-gradient(135deg,#160c03,#221104)", "#f97316", "#fed7aa"),
+        (p1, TOP_AGENTS_DATA[0], "🥇", "linear-gradient(135deg,#fffbeb,#fef3c7)", "#d97706", "#fde68a"),
+        (p2, TOP_AGENTS_DATA[1], "🥈", "linear-gradient(135deg,#f8fafc,#f1f5f9)", "#64748b", "#e2e8f0"),
+        (p3, TOP_AGENTS_DATA[2], "🥉", "linear-gradient(135deg,#fff7ed,#fef3c7)", "#ea580c", "#fed7aa"),
     ]
     for col, agent, medal, bg, accent, border in podium:
         with col:
@@ -1036,10 +1437,10 @@ elif page == "🏆 Top Agents":
             <div style='background:{bg};border:1px solid {border}33;border-top:3px solid {accent};
                         border-radius:16px;padding:22px 18px 18px;text-align:center;'>
                 <div style='font-size:32px;margin-bottom:10px;'>{medal}</div>
-                <div style='font-family:Syne,sans-serif;font-weight:800;font-size:14.5px;color:#e8edf5;line-height:1.3;margin-bottom:4px;'>{agent['Agent']}</div>
+                <div style='font-family:Syne,sans-serif;font-weight:800;font-size:14.5px;color:#0f1c2e;line-height:1.3;margin-bottom:4px;'>{agent['Agent']}</div>
                 <div style='font-size:11px;color:#6b7fa3;margin-bottom:14px;'>{agent['Process']}</div>
                 <div style='font-size:24px;font-weight:800;font-family:Syne,sans-serif;color:{accent};letter-spacing:-0.02em;'>₹{agent['Incentive (₹L)']:.2f}L</div>
-                <div style='font-size:10.5px;color:#3d4f6a;margin-top:6px;'>
+                <div style='font-size:10.5px;color:#6b7fa3;margin-top:6px;'>
                     APE ₹{agent['Issued APE (₹L)']:.2f}L &nbsp;·&nbsp; {agent['Issued Bkgs']:.1f} bkgs
                 </div>
             </div>
@@ -1050,25 +1451,25 @@ elif page == "🏆 Top Agents":
     df_agents = pd.DataFrame(TOP_AGENTS_DATA)
 
     def hl_top(row):
-        colors = {"🥇":"background-color:#1a0f00;color:#fde68a;font-weight:700",
-                  "🥈":"background-color:#0f1521;color:#e2e8f0;font-weight:700",
-                  "🥉":"background-color:#160c03;color:#fed7aa;font-weight:700"}
-        style = colors.get(row["Rank"], "color:#6b7fa3")
+        colors = {"🥇":"background-color:#fffbeb;color:#92400e;font-weight:700",
+                  "🥈":"background-color:#f8fafc;color:#475569;font-weight:700",
+                  "🥉":"background-color:#fff7ed;color:#9a3412;font-weight:700"}
+        style = colors.get(row["Rank"], "color:#334155")
         return [style]*len(row)
 
     styled = (
         df_agents.style
         .apply(hl_top, axis=1)
-        .bar(subset=["Incentive (₹L)"], color="#1a3a1a", vmin=0)
-        .bar(subset=["Issued APE (₹L)"], color="#0f1f3a", vmin=0)
+        .bar(subset=["Incentive (₹L)"], color="#dbeafe", vmin=0)
+        .bar(subset=["Issued APE (₹L)"], color="#d1fae5", vmin=0)
         .format({"Issued Bkgs":"{:.1f}","Incentive (₹L)":"₹{:.2f}L","Issued APE (₹L)":"₹{:.2f}L"})
         .set_properties(**{"font-size":"12.5px","padding":"10px 14px",
-                           "background-color":"#0d1117","color":"#a8b8d0"})
+                           "background-color":"#ffffff","color":"#1e293b"})
         .set_table_styles([
-            {"selector":"thead th","props":[("background-color","#060910"),("color","#3d4f6a"),
+            {"selector":"thead th","props":[("background-color","#f8fafd"),("color","#6b7fa3"),
              ("font-size","10px"),("text-transform","uppercase"),("letter-spacing","0.1em"),
              ("padding","10px 14px"),("border-bottom","1px solid #1e2d45"),("font-weight","700")]},
-            {"selector":"tbody tr:hover td","props":[("background-color","#111827")]},
+            {"selector":"tbody tr:hover td","props":[("background-color","#eff6ff")]},
         ])
         .hide(axis="index")
     )
@@ -1083,7 +1484,7 @@ elif page == "🏆 Top Agents":
         color_continuous_scale=[[0,"#0f2a4a"],[0.5,"#3b82f6"],[1.0,"#06b6d4"]],
     )
     fig_sc.update_traces(textposition="top center",
-                         textfont=dict(size=9.5, color="#6b7fa3", family=FONT_FAMILY),
+                         textfont=dict(size=9.5, color="#4a5e7a", family=FONT_FAMILY),
                          marker=dict(line=dict(width=1, color="#0d1117")))
     layout = chart_layout(320, dict(l=0,r=0,t=16,b=0))
     layout["coloraxis_showscale"] = False
@@ -1095,8 +1496,18 @@ elif page == "🏆 Top Agents":
 # PAGE 3: BY PROCESS
 # ════════════════════════════════════════════════════════════════════════
 elif page == "📊 By Process":
-    st.markdown("<div class='page-title'>📊 Process Group Performance</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>Incentive payout, bookings and APE broken down by sales channel.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#2e1065 0%,#7c3aed 55%,#a855f7 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>Process Group Performance</div>
+                <div class='page-subtitle'>Incentive payout, bookings and APE broken down by sales channel.</div>
+            </div>
+            <div class='page-header-icon'>📊</div>
+            <div class='page-header-badge'>🔀 10 Channels</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     df_proc = pd.DataFrame(PROCESS_DATA)
     df_asc  = df_proc.sort_values("Avg Incentive (₹)", ascending=True)
@@ -1108,11 +1519,11 @@ elif page == "📊 By Process":
         fig1 = go.Figure(go.Bar(
             x=df_asc["Avg Incentive (₹)"], y=df_asc["Process Group"], orientation="h",
             marker=dict(color=df_asc["Avg Incentive (₹)"],
-                        colorscale=[[0,"#1e0a3c"],[0.5,"#6d28d9"],[1.0,"#c4b5fd"]],
+                        colorscale=[[0,"#ede9fe"],[0.5,"#8b5cf6"],[1.0,"#5b21b6"]],
                         line=dict(width=0)),
             text=df_asc["Avg Incentive (₹)"].apply(lambda x: f"₹{x:,.0f}"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig1.update_layout(**chart_layout(360, dict(l=0,r=60,t=16,b=0)))
         st.plotly_chart(fig1, use_container_width=True)
@@ -1122,11 +1533,11 @@ elif page == "📊 By Process":
         fig2 = go.Figure(go.Bar(
             x=df_bk["Avg Issued Bkgs"], y=df_bk["Process Group"], orientation="h",
             marker=dict(color=df_bk["Avg Issued Bkgs"],
-                        colorscale=[[0,"#052e1a"],[0.5,"#065f46"],[1.0,"#6ee7b7"]],
+                        colorscale=[[0,"#d1fae5"],[0.5,"#34d399"],[1.0,"#059669"]],
                         line=dict(width=0)),
             text=df_bk["Avg Issued Bkgs"].apply(lambda x: f"{x:.1f}"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig2.update_layout(**chart_layout(360, dict(l=0,r=40,t=16,b=0)))
         st.plotly_chart(fig2, use_container_width=True)
@@ -1140,7 +1551,7 @@ elif page == "📊 By Process":
         marker=dict(color=PROC_COLORS[:len(df_total)], line=dict(width=0)),
         text=df_total["Total Incentive (₹L)"].apply(lambda x: f"₹{x:.1f}L"),
         textposition="outside",
-        textfont=dict(color="#6b7fa3", size=10.5, family=FONT_FAMILY),
+        textfont=dict(color="#4a5e7a", size=10.5, family=FONT_FAMILY),
     ))
     fig3.update_layout(**chart_layout(280, dict(l=0,r=0,t=16,b=0)))
     st.plotly_chart(fig3, use_container_width=True)
@@ -1148,17 +1559,17 @@ elif page == "📊 By Process":
     st.markdown("<div class='section-label'>Full Data Table</div>", unsafe_allow_html=True)
     styled_proc = (
         df_proc.style
-        .bar(subset=["Total Incentive (₹L)"], color="#0f1f3a", vmin=0)
-        .bar(subset=["Avg Wtd APE (₹L)"],     color="#052e1a", vmin=0)
+        .bar(subset=["Total Incentive (₹L)"], color="#dbeafe", vmin=0)
+        .bar(subset=["Avg Wtd APE (₹L)"],     color="#d1fae5", vmin=0)
         .format({"Avg Incentive (₹)":"₹{:,.0f}","Total Incentive (₹L)":"₹{:.2f}L",
                  "Avg Wtd APE (₹L)":"₹{:.2f}L","Avg Issued Bkgs":"{:.1f}"})
         .set_properties(**{"font-size":"12.5px","padding":"10px 14px",
-                           "background-color":"#0d1117","color":"#a8b8d0"})
+                           "background-color":"#ffffff","color":"#1e293b"})
         .set_table_styles([
-            {"selector":"thead th","props":[("background-color","#060910"),("color","#3d4f6a"),
+            {"selector":"thead th","props":[("background-color","#f8fafd"),("color","#6b7fa3"),
              ("font-size","10px"),("text-transform","uppercase"),("letter-spacing","0.1em"),
              ("padding","10px 14px"),("border-bottom","1px solid #1e2d45"),("font-weight","700")]},
-            {"selector":"tbody tr:hover td","props":[("background-color","#111827")]},
+            {"selector":"tbody tr:hover td","props":[("background-color","#eff6ff")]},
         ])
         .hide(axis="index")
     )
@@ -1169,8 +1580,18 @@ elif page == "📊 By Process":
 # PAGE 4: BY TENURE
 # ════════════════════════════════════════════════════════════════════════
 elif page == "🕐 By Tenure":
-    st.markdown("<div class='page-title'>🕐 Tenure-Based Performance</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>How agent experience (AON) shapes incentives, bookings and APE.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#064e3b 0%,#059669 55%,#34d399 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>Tenure-Based Performance</div>
+                <div class='page-subtitle'>How agent experience (AON) shapes incentives, bookings and APE.</div>
+            </div>
+            <div class='page-header-icon'>🕐</div>
+            <div class='page-header-badge'>📆 4 Tenure Bands</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Tenure KPI cards
     st.markdown("<div class='section-label'>Avg Incentive by Tenure Band</div>", unsafe_allow_html=True)
@@ -1178,12 +1599,12 @@ elif page == "🕐 By Tenure":
     for i, (col, t) in enumerate(zip(cols, TENURE_DATA)):
         c = TENURE_PALETTE[i]
         col.markdown(f"""
-        <div style='background:#0d1117;border:1px solid #1e2d45;border-top:3px solid {c};
+        <div style='background:linear-gradient(145deg,#ffffff,#f8fbff);border:1px solid #dde3ef;border-top:3px solid {c};
                     border-radius:14px;padding:18px 16px;'>
             <div style='font-size:9.5px;font-weight:700;color:{c};text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;'>{t['Tenure Band']}</div>
-            <div style='font-family:Syne,sans-serif;font-size:22px;font-weight:700;color:#e8edf5;letter-spacing:-0.02em;'>₹{t['Avg Incentive (₹)']:,}</div>
+            <div style='font-family:Syne,sans-serif;font-size:22px;font-weight:700;color:#0f1c2e;letter-spacing:-0.02em;'>₹{t['Avg Incentive (₹)']:,}</div>
             <div style='font-size:10.5px;color:#3d4f6a;margin:4px 0 10px;'>avg incentive / agent</div>
-            <div style='height:3px;background:#1e2d45;border-radius:99px;'>
+            <div style='height:3px;background:#e8eef8;border-radius:99px;'>
                 <div style='width:{int(t["Avg Incentive (₹)"]/45702*100)}%;height:100%;background:{c};border-radius:99px;'></div>
             </div>
             <div style='font-size:11px;color:#6b7fa3;margin-top:10px;font-weight:500;'>{t['Agents']:,} agents</div>
@@ -1203,7 +1624,7 @@ elif page == "🕐 By Tenure":
             marker_color=TENURE_PALETTE, marker_line_width=0,
             text=df_ten["Avg Incentive (₹)"].apply(lambda x: f"₹{x:,}"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig_li.add_trace(go.Scatter(
             x=df_ten["Tenure Band"], y=df_ten["Avg Incentive (₹)"],
@@ -1222,7 +1643,7 @@ elif page == "🕐 By Tenure":
             marker_color=TENURE_PALETTE, marker_line_width=0,
             text=df_ten["Avg Issued Bkgs"],
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig_bk2.update_layout(**chart_layout(300, dict(l=0,r=0,t=16,b=0)))
         st.plotly_chart(fig_bk2, use_container_width=True)
@@ -1250,29 +1671,29 @@ elif page == "🕐 By Tenure":
         ))
     fig_rad.update_layout(
         polar=dict(
-            radialaxis=dict(visible=True, showticklabels=False, gridcolor="#1e2d45", linecolor="#1e2d45"),
-            angularaxis=dict(tickfont=dict(size=11, color="#6b7fa3", family=FONT_FAMILY), gridcolor="#1e2d45", linecolor="#1e2d45"),
-            bgcolor=CHART_BG,
+            radialaxis=dict(visible=True, showticklabels=False, gridcolor="#e8eef8", linecolor="#dde3ef"),
+            angularaxis=dict(tickfont=dict(size=11, color="#6b7fa3", family=FONT_FAMILY), gridcolor="#e8eef8", linecolor="#dde3ef"),
+            bgcolor="#ffffff",
         ),
-        paper_bgcolor=CHART_BG,
+        paper_bgcolor="#ffffff",
         font=dict(family=FONT_FAMILY, color=TEXT_COLOR),
         height=340,
         margin=dict(l=40,r=40,t=16,b=16),
         showlegend=True,
-        legend=dict(font=dict(color="#6b7fa3", size=11), bgcolor="rgba(0,0,0,0)"),
+        legend=dict(font=dict(color="#4a5e7a", size=11), bgcolor="rgba(255,255,255,0.8)", bordercolor="#dde3ef", borderwidth=1),
     )
     st.plotly_chart(fig_rad, use_container_width=True)
 
     st.markdown("<div class='section-label'>Detailed Data Table</div>", unsafe_allow_html=True)
     styled_ten = (
         df_ten.style
-        .bar(subset=["Avg Incentive (₹)"], color="#1a3a1a", vmin=0)
-        .bar(subset=["Avg Issued Bkgs"],   color="#0f1f3a", vmin=0)
+        .bar(subset=["Avg Incentive (₹)"], color="#d1fae5", vmin=0)
+        .bar(subset=["Avg Issued Bkgs"],   color="#dbeafe", vmin=0)
         .format({"Avg Incentive (₹)":"₹{:,.0f}","Avg Wtd APE (₹L)":"₹{:.2f}L","Avg Issued Bkgs":"{:.2f}"})
         .set_properties(**{"font-size":"12.5px","padding":"10px 14px",
-                           "background-color":"#0d1117","color":"#a8b8d0"})
+                           "background-color":"#ffffff","color":"#1e293b"})
         .set_table_styles([
-            {"selector":"thead th","props":[("background-color","#060910"),("color","#3d4f6a"),
+            {"selector":"thead th","props":[("background-color","#f8fafd"),("color","#6b7fa3"),
              ("font-size","10px"),("text-transform","uppercase"),("letter-spacing","0.1em"),
              ("padding","10px 14px"),("border-bottom","1px solid #1e2d45"),("font-weight","700")]},
         ])
@@ -1285,8 +1706,18 @@ elif page == "🕐 By Tenure":
 # PAGE 5: MANAGERS
 # ════════════════════════════════════════════════════════════════════════
 elif page == "👥 Managers":
-    st.markdown("<div class='page-title'>👥 Manager Performance</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>Team output, average productivity and total incentive by manager.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#1e1b4b 0%,#4338ca 55%,#6366f1 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>Manager Performance</div>
+                <div class='page-subtitle'>Team output, average productivity and total incentive by manager.</div>
+            </div>
+            <div class='page-header-icon'>👥</div>
+            <div class='page-header-badge'>🏢 10 Managers</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     df_mgr = pd.DataFrame(MANAGER_DATA).sort_values("Total Incentive (₹L)", ascending=False)
 
@@ -1297,11 +1728,11 @@ elif page == "👥 Managers":
         fig_m1 = go.Figure(go.Bar(
             x=df_m1["Total Incentive (₹L)"], y=df_m1["Manager"], orientation="h",
             marker=dict(color=df_m1["Total Incentive (₹L)"],
-                        colorscale=[[0,"#1e0a3c"],[0.5,"#6d28d9"],[1.0,"#c4b5fd"]],
+                        colorscale=[[0,"#ede9fe"],[0.5,"#8b5cf6"],[1.0,"#5b21b6"]],
                         line=dict(width=0)),
             text=df_m1["Total Incentive (₹L)"].apply(lambda x: f"₹{x:.1f}L"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig_m1.update_layout(**chart_layout(390, dict(l=0,r=55,t=16,b=0)))
         st.plotly_chart(fig_m1, use_container_width=True)
@@ -1312,11 +1743,11 @@ elif page == "👥 Managers":
         fig_m2 = go.Figure(go.Bar(
             x=df_m2["Avg/Agent (₹)"], y=df_m2["Manager"], orientation="h",
             marker=dict(color=df_m2["Avg/Agent (₹)"],
-                        colorscale=[[0,"#011f2d"],[0.5,"#0e7490"],[1.0,"#06b6d4"]],
+                        colorscale=[[0,"#cffafe"],[0.5,"#22d3ee"],[1.0,"#0891b2"]],
                         line=dict(width=0)),
             text=df_m2["Avg/Agent (₹)"].apply(lambda x: f"₹{x:,.0f}"),
             textposition="outside",
-            textfont=dict(color="#6b7fa3", size=10, family=FONT_FAMILY),
+            textfont=dict(color="#4a5e7a", size=10, family=FONT_FAMILY),
         ))
         fig_m2.update_layout(**chart_layout(390, dict(l=0,r=65,t=16,b=0)))
         st.plotly_chart(fig_m2, use_container_width=True)
@@ -1330,7 +1761,7 @@ elif page == "👥 Managers":
         text="Manager", size_max=48,
     )
     fig_ms.update_traces(textposition="top center",
-                         textfont=dict(size=9.5, color="#6b7fa3", family=FONT_FAMILY),
+                         textfont=dict(size=9.5, color="#4a5e7a", family=FONT_FAMILY),
                          marker=dict(line=dict(width=1, color="#0d1117")))
     layout_ms = chart_layout(320, dict(l=0,r=0,t=16,b=0))
     layout_ms["coloraxis_showscale"] = False
@@ -1340,16 +1771,16 @@ elif page == "👥 Managers":
     st.markdown("<div class='section-label'>Manager Leaderboard</div>", unsafe_allow_html=True)
     styled_mgr = (
         df_mgr.style
-        .bar(subset=["Total Incentive (₹L)"], color="#1e0a3c", vmin=0)
-        .bar(subset=["Avg/Agent (₹)"],        color="#011f2d", vmin=0)
+        .bar(subset=["Total Incentive (₹L)"], color="#ede9fe", vmin=0)
+        .bar(subset=["Avg/Agent (₹)"],        color="#cffafe", vmin=0)
         .format({"Total Incentive (₹L)":"₹{:.2f}L","Avg/Agent (₹)":"₹{:,.0f}","Bkgs Issued":"{:,.0f}"})
         .set_properties(**{"font-size":"12.5px","padding":"10px 14px",
-                           "background-color":"#0d1117","color":"#a8b8d0"})
+                           "background-color":"#ffffff","color":"#1e293b"})
         .set_table_styles([
-            {"selector":"thead th","props":[("background-color","#060910"),("color","#3d4f6a"),
+            {"selector":"thead th","props":[("background-color","#f8fafd"),("color","#6b7fa3"),
              ("font-size","10px"),("text-transform","uppercase"),("letter-spacing","0.1em"),
              ("padding","10px 14px"),("border-bottom","1px solid #1e2d45"),("font-weight","700")]},
-            {"selector":"tbody tr:hover td","props":[("background-color","#111827")]},
+            {"selector":"tbody tr:hover td","props":[("background-color","#eff6ff")]},
         ])
         .hide(axis="index")
     )
@@ -1360,15 +1791,25 @@ elif page == "👥 Managers":
 # PAGE 6: AI CHATBOT
 # ════════════════════════════════════════════════════════════════════════
 elif page == "🤖 AI Chatbot":
-    st.markdown("<div class='page-title'>🤖 AI Analytics Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='page-subtitle'>Ask anything about the agent data in plain English — powered by Claude.</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='page-header-wrap' style='background:linear-gradient(130deg,#0f172a 0%,#1e3a5f 40%,#0891b2 100%);'>
+        <div class='page-header-inner'>
+            <div class='page-header-left'>
+                <div class='page-title'>AI Analytics Assistant</div>
+                <div class='page-subtitle'>Ask anything about the agent data in plain English — powered by Claude.</div>
+            </div>
+            <div class='page-header-icon'>🤖</div>
+            <div class='page-header-badge'>⚡ Powered by Claude</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     if not api_key:
         st.markdown("""
-        <div style='background:#0d1117;border:1px solid #1e2d45;border-left:3px solid #3b82f6;
+        <div style='background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-left:3px solid #2563eb;
                     border-radius:12px;padding:20px 22px;margin-bottom:20px;'>
-            <div style='font-size:13px;color:#6b7fa3;line-height:1.7;'>
-                👈 &nbsp;Enter your <span style='color:#3b82f6;font-weight:600;'>Anthropic API key</span> in the sidebar to activate the chatbot.
+            <div style='font-size:13px;color:#1e40af;line-height:1.7;'>
+                👈 &nbsp;Enter your <span style='color:#1d4ed8;font-weight:600;'>Anthropic API key</span> in the sidebar to activate the chatbot.
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1382,8 +1823,8 @@ elif page == "🤖 AI Chatbot":
             "What percentage of agents had zero issuance this month?",
         ]:
             st.markdown(f"""
-            <div style='background:#0d1117;border:1px solid #1e2d45;border-radius:10px;
-                        padding:11px 16px;margin-bottom:8px;font-size:13px;color:#6b7fa3;'>
+            <div style='background:#ffffff;border:1px solid #dde3ef;border-radius:10px;box-shadow:0 1px 4px rgba(15,28,46,0.06);
+                        padding:11px 16px;margin-bottom:8px;font-size:13px;color:#4a5e7a;'>
                 💬 &nbsp;{q}
             </div>""", unsafe_allow_html=True)
 
