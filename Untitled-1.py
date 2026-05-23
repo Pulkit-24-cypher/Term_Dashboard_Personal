@@ -500,8 +500,8 @@ hr { border-color: var(--border) !important; margin: 16px 0 !important; }
 }
 
 /* ── Hide branding ── */
-#MainMenu { visibility: hidden; }
-footer { visibility: visible; }
+#MainMenu { visibility: visible; }
+footer { visibility: hidden; }
 header { visibility: visible; }
 
 /* ── Page header banner ── */
