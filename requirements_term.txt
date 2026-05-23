@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────
+# Term Agent Inc — Analytics Dashboard
+# Requirements File
+# ─────────────────────────────────────────────────────────────
+# Install all dependencies:
+#   pip install -r requirements.txt
+#
+# Python version: 3.9+  (3.11 recommended)
+# ─────────────────────────────────────────────────────────────
+
+# ── Core framework ───────────────────────────────────────────
+streamlit>=1.35.0
+
+# ── AI / LLM ─────────────────────────────────────────────────
+anthropic>=0.25.0           # Claude API client
+
+# ── Data manipulation ─────────────────────────────────────────
+pandas>=2.0.0               # DataFrames, aggregations
+openpyxl>=3.1.0             # Read/write .xlsx files (pandas engine)
+
+# ── Visualisation ─────────────────────────────────────────────
+plotly>=5.18.0              # Interactive charts (px + go)
+
+# ── Standard library (no install needed) ─────────────────────
+# json      — built-in
+# ─────────────────────────────────────────────────────────────
