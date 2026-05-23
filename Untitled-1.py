@@ -501,8 +501,8 @@ hr { border-color: var(--border) !important; margin: 16px 0 !important; }
 
 /* ── Hide branding ── */
 #MainMenu { visibility: hidden; }
-footer { visibility: hidden; }
-header { visibility: hidden; }
+footer { visibility: visible; }
+header { visibility: visible; }
 
 /* ── Page header banner ── */
 .page-header-wrap {
